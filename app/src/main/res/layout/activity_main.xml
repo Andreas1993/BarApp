@@ -49,7 +49,7 @@
                 android:onClick="clickButton"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Opening"
+                android:text="Opening Hours"
                 android:textColor="#ffffff"
                 android:background="@drawable/round_corners"
                 android:layout_marginLeft="2dp"
