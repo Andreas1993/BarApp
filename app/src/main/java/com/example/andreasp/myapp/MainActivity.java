@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickButton(View view) {
         switch(view.getId()){
             case R.id.menuButton:
-                Intent menuIntent = new Intent(MainActivity.this, menuActivity.class);
+                Intent menuIntent = new Intent(MainActivity.this, menu_Activity.class);
                 startActivity(menuIntent);
                 break;
             case  R.id.hoursButton:

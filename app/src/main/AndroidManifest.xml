@@ -14,12 +14,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".menuActivity"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".openingHours" />
-        <activity android:name=".events"></activity>
+        <activity android:name=".events" />
+        <activity android:name=".menu_Activity"></activity>
     </application>
 
 </manifest>
