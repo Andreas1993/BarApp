@@ -75,10 +75,10 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         holder.groupPosition = groupPosition;
 
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_parent, viewGroup,false);
+            view = inflater.inflate(R.layout.activity_menu, viewGroup,false);
         }
 
-        TextView textView = (TextView) view.findViewById(R.id.list_item_text_view);
+        TextView textView = (TextView) view.findViewById(R.id.list_item_text_parent);
         textView.setText(getGroup(groupPosition).toString());
 
         view.setTag(holder);
@@ -86,6 +86,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         //return the entire view
         return view;
     }
+
+
 
     @Override
     //in this method you must set the text to see the children on the list
@@ -96,7 +98,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         holder.groupPosition = groupPosition;
 
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_child, viewGroup,false);
+            view = inflater.inflate(R.layout.activity_menu, viewGroup,false);
         }
 
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_child);
@@ -107,6 +109,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         //return the entire view
         return view;
     }
+
+
 
     @Override
     public boolean isChildSelectable(int i, int i1) {
