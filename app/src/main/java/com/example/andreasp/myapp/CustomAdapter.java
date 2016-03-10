@@ -21,9 +21,11 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
     private LayoutInflater inflater;
     private ArrayList<Parent> mParent;
+    private ArrayList<Price> mPrice;
 
-    public CustomAdapter(Context context, ArrayList<Parent> parent){
+    public CustomAdapter(Context context, ArrayList<Parent> parent, ArrayList<Price> prices){
         mParent = parent;
+        mPrice = prices;
         inflater = LayoutInflater.from(context);
     }
 
@@ -32,6 +34,9 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     //counts the number of group/parent items so the list knows how many times calls getGroupView() method
     public int getGroupCount() {
         return mParent.size();
+    }
+    public int getPriceCount() {
+        return mPrice.size();
     }
 
     @Override
@@ -43,8 +48,9 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     @Override
     //gets the title of each parent/group
     public Object getGroup(int i) {
-        return mParent.get(i).getTitle();
-    }
+        return mParent.get(i).getTitle();}
+
+    public Object getPriceGroup(int i) {return mPrice.get(i).getTitle();}
 
     @Override
     //gets the name of each item
@@ -79,7 +85,11 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         }
 
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_parent);
+        TextView textView1 = (TextView) view.findViewById(R.id.price_item_text);
+        textView1.setText(getPriceGroup(groupPosition).toString());
         textView.setText(getGroup(groupPosition).toString());
+
+        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_launcher, 0, 0, 0);
 
         view.setTag(holder);
 
