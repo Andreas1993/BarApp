@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent menuIntent = new Intent(MainActivity.this, menu_Activity.class);
                 startActivity(menuIntent);
                 break;
-            case  R.id.hoursButton:
-                Intent hoursIntent = new Intent(MainActivity.this, openingHours.class);
+            case  R.id.ProfileButton:
+                Intent hoursIntent = new Intent(MainActivity.this, profile_activity.class);
                 startActivity(hoursIntent);
                 break;
             case R.id.eventsButton:
