@@ -10,6 +10,11 @@ public class Parent {
     private String mTitle;
     private ArrayList<String> mArrayChildren;
     private ArrayList<String> mArrayPrices;
+    public Integer mImage;
+
+    public Parent(){
+    }
+
 
     public String getTitle() {
         return mTitle;
@@ -32,4 +37,18 @@ public class Parent {
     public void setArrayPrices(ArrayList<String> arrayPrice) {
         mArrayPrices = arrayPrice;
     }
+
+
+
+    public int getImage() {
+        return mImage;
+    }
+
+    public void setImage(int mImage) {
+
+        this.mImage = mImage;
+    }
+
+
 }
+

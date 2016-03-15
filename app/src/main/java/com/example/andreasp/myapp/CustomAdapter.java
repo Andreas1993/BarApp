@@ -7,11 +7,13 @@ package com.example.andreasp.myapp;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -23,10 +25,12 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
     private LayoutInflater inflater;
     private ArrayList<Parent> mParent;
+
     //private ArrayList<Price> mPrice;
 
     public CustomAdapter(Context context, ArrayList<Parent> parent){
         mParent = parent;
+        //mImage = image;
         //mPrice = prices;
         inflater = LayoutInflater.from(context);
     }
@@ -49,7 +53,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public Object getGroup(int i) {
         return mParent.get(i).getTitle();}
 
-   // public Object getPriceGroup(int i) {return mPrice.get(i).getTitle();}
+   public Object getImageGroup(int i) {return mParent.get(i).getImage();}
 
     @Override
     //gets the name of each item
@@ -79,16 +83,21 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         ViewHolder holder = new ViewHolder();
         holder.groupPosition = groupPosition;
 
+
         if (view == null) {
             view = inflater.inflate(R.layout.activity_menu, viewGroup,false);
         }
 
+
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.Parent_Image);
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_parent);
+
+
         //TextView textView1 = (TextView) view.findViewById(R.id.price_item_text);
         //textView1.setText(getPriceGroup(groupPosition).toString());
         textView.setText(getGroup(groupPosition).toString());
-
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_launcher, 0, 0, 0);
+        imageView.setImageResource(mParent.get(groupPosition).getImage());
 
         view.setTag(holder);
 

@@ -7,6 +7,7 @@ import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 
 public class menu_Activity extends Activity {
@@ -20,9 +21,12 @@ public class menu_Activity extends Activity {
 
         mExpandableList = (ExpandableListView)findViewById(R.id.drinksMenu);
 
-        String[] drinkPrices = {"","","3$","4$","3.5$","5$","","","3$","4$","3.5$","5$","6$"};
-        String[] drinksArray = {"Beer","Shots","Gin and Tonic","Jäeger Bomb","Rum and Coke","Whiskey"};
-        String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Sour shots","Tequila","Death","2cl Gin","20cl Tonic","2cl Jäeger Mäester", "10cl Redbull","2cl Rum","20cl Coca Cola"};
+
+        int Images[] = {R.drawable.beer,R.drawable.drinks,R.drawable.shots,R.drawable.liquor};
+        String[] drinksArray = {"Beer","Drinks","Shots","Hard liquor"};
+
+        String[] drinkPrices = {"1,50$","2,00$","2,50$","1,00$","2,50$","2,20$","2,50$","2,55$","1,00$","1,10$","1,00$","4,00$","2,00$","5,00$"};
+        String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Dark and stormy","Coke'n'rum","Mojito","Pina Colada","Sour shots","Tequila","Licourice shots","Whiskey","Vodka","Brandy"};
         ArrayList<Parent> arrayParents = new ArrayList<Parent>();
         ArrayList<String> arrayPrice = new ArrayList<String>();
         ArrayList<String> arrayChildren = new ArrayList<String>();
@@ -32,6 +36,7 @@ public class menu_Activity extends Activity {
             //for each "i" create a new Parent object to set the title and the children
             Parent parent = new Parent();
             parent.setTitle(drinksArray[i]);
+            parent.setImage(Images[i]);
 
             arrayPrice = new ArrayList<>();
             arrayChildren = new ArrayList<>();
@@ -42,31 +47,24 @@ public class menu_Activity extends Activity {
                         arrayPrice.add(drinkPrices[j]);
                     }
                     break;
-                case "Shots":
-                    for (int j = 4; j <= 6; j++) {
+                case "Drinks":
+                    for (int j = 4; j <= 7; j++) {
                         arrayChildren.add(drinksIngredients[j]);
                         arrayPrice.add(drinkPrices[j]);}
                     break;
-                case "Gin and Tonic":
-                    for (int j = 7; j <= 8; j++) {
+                case "Shots":
+                    for (int j = 8; j <= 10; j++) {
                         arrayChildren.add(drinksIngredients[j]);
                         arrayPrice.add(drinkPrices[j]);
                     }
                     break;
-                case "Jäeger Bomb":
-                    for (int j = 9; j <= 10; j++) {
+                case "Hard liquor":
+                    for (int j = 11; j <= 13; j++) {
                         arrayChildren.add(drinksIngredients[j]);
                         arrayPrice.add(drinkPrices[j]);
                     }
                     break;
-                case "Rum and Coke":
-                    for (int j = 11; j <= 12; j++) {
-                        arrayChildren.add(drinksIngredients[j]);
-                        arrayPrice.add(drinkPrices[j]);
-                    }
-                    break;
-                case "Whiskey":
-                    break;
+
             }
             parent.setArrayPrices(arrayPrice);
             parent.setArrayChildren(arrayChildren);
@@ -74,10 +72,12 @@ public class menu_Activity extends Activity {
 
             //in this array we add the Parent object. We will use the arrayParents at the setAdapter
             arrayParents.add(parent);
+            //sets the adapter that provides data to the list.
+
 
         }
-        //sets the adapter that provides data to the list.
         mExpandableList.setAdapter(new CustomAdapter(menu_Activity.this, arrayParents));
+
 
 
 
