@@ -45,7 +45,17 @@
         android:layout_height="wrap_content"
         android:background="@drawable/profile_button"
         android:layout_below="@+id/ProfilePic"
-        android:layout_weight="1"></Button>
+        android:layout_weight="1"/>
+        <Button
+            android:id="@+id/loadChanges"
+            android:layout_gravity="center"
+            android:text="Load changes"
+            android:textSize="13dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_button"
+            android:layout_below="@+id/ProfilePic"
+            android:layout_weight="1"/>
     </LinearLayout>
     <TextView
         android:id="@+id/FirstName"

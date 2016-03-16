@@ -14,9 +14,17 @@ import android.widget.TextView;
 
 public class profile_activity extends AppCompatActivity {
 
+    // Variables
     Button captureProfilePic;
+    Button saveChanges;
+    Button loadChanges;
     ImageView profileConfig;
     private static final int CAMERA_PIC_REQUEST = 1337;
+    EditText FirstNameEdit;
+    EditText LastNameEdit;
+    EditText EmailEdit;
+    String fname;
+    SharedPreferences ProfileData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +33,17 @@ public class profile_activity extends AppCompatActivity {
 
         captureProfilePic = (Button) findViewById(R.id.newProfilePic);
         profileConfig = (ImageView) findViewById(R.id.ProfilePic);
+        FirstNameEdit = (EditText) findViewById(R.id.FirstNameEdit);
+        LastNameEdit = (EditText) findViewById(R.id.LastNameEdit);
+        EmailEdit = (EditText) findViewById(R.id.EmailEdit);
+        saveChanges = (Button) findViewById(R.id.saveChanges);
+        loadChanges = (Button) findViewById(R.id.loadChanges);
+
+        ProfileData = getSharedPreferences(fname, AppCompatActivity.MODE_PRIVATE);
 
         captureProfilePic.setOnClickListener(new captureProfilePicClicker());
+        saveChanges.setOnClickListener(new sharedPrefs());
+        loadChanges.setOnClickListener(new sharedPrefs());
 
     }
 
@@ -54,83 +71,33 @@ public class profile_activity extends AppCompatActivity {
 
     public class sharedPrefs extends AppCompatActivity implements Button.OnClickListener {
 
-        // Variables
-        EditText FirstNameEdit;
-        EditText LastNameEdit;
-        EditText EmailEdit;
-        TextView FirstName;
-        TextView LastName;
-        TextView Email;
-        String fname = "FNEdit";
-        String lname = "LNEdit";
-        String E_mail = "EmailEdit";
-        SharedPreferences FirstNameData;
-        SharedPreferences LastNameData;
-        SharedPreferences EmailData;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_profile_activity);
-            setupVariables();
-            FirstNameData = getSharedPreferences(fname, 0);
-            LastNameData = getSharedPreferences(lname, 0);
-            EmailData = getSharedPreferences(E_mail, 0);
-
-        }
-
-
-        private void setupVariables(){
-            Button saveChanges = (Button) findViewById(R.id.saveChanges);
-            Button loadChanges = (Button) findViewById(R.id.ProfileButton);
-
-            FirstNameEdit = (EditText) findViewById(R.id.FirstNameEdit);
-            LastNameEdit = (EditText) findViewById(R.id.LastNameEdit);
-            EmailEdit = (EditText) findViewById(R.id.EmailEdit);
-
-            FirstName = (TextView) findViewById(R.id.FirstName);
-            LastName = (TextView) findViewById(R.id.LastName);
-            Email = (TextView) findViewById(R.id.Email);
-
-            saveChanges.setOnClickListener(this);
-            loadChanges.setOnClickListener(this);
-        }
 
         public void onClick(View v){
             switch (v.getId()){
                 case R.id.saveChanges:
                     String FirstNameText = FirstNameEdit.getText().toString();
-                    SharedPreferences.Editor FnameEditor = FirstNameData.edit();
-                    FnameEditor.putString("FirstNamePut", FirstNameText);
-                    FnameEditor.apply();
-
                     String LastNameText = LastNameEdit.getText().toString();
-                    SharedPreferences.Editor LnameEditor = LastNameData.edit();
-                    LnameEditor.putString("LastNamePut", LastNameText);
-                    LnameEditor.apply();
-
                     String EmailText = EmailEdit.getText().toString();
-                    SharedPreferences.Editor EmailEditor = EmailData.edit();
-                    EmailEditor.putString("EmailHolderPut", EmailText);
-                    EmailEditor.apply();
+                    SharedPreferences.Editor ProfileEditor = ProfileData.edit();
+                    ProfileEditor.putString("FirstNamePut", FirstNameText);
+                    ProfileEditor.putString("LastNamePut", LastNameText);
+                    ProfileEditor.putString("EmailHolderPut", EmailText);
+                    ProfileEditor.commit();
                     break;
 
-                case R.id.newProfilePic:
-                    FirstNameData = getSharedPreferences(fname, 0);
-                    String FirstNameLoad = FirstNameData.getString("FirstNamePut", "Error");
-                    FirstName.setText(FirstNameLoad);
-
-                    LastNameData = getSharedPreferences(lname, 0);
-                    String LastNameLoad = LastNameData.getString("LastNamePut", "Error");
-                    LastName.setText(LastNameLoad);
-
-                    EmailData = getSharedPreferences(E_mail, 0);
-                    String EmailLoad = EmailData.getString("EmailHolderPut", "Error");
-                    Email.setText(EmailLoad);
+                case R.id.loadChanges:
+                    String FirstNameLoad = ProfileData.getString("FirstNamePut", "");
+                    String LastNameLoad = ProfileData.getString("LastNamePut", "");
+                    String EmailLoad = ProfileData.getString("EmailHolderPut", "");
+                    FirstNameEdit.setText(FirstNameLoad);
+                    LastNameEdit.setText(LastNameLoad);
+                    EmailEdit.setText(EmailLoad);
                     break;
             }
         }
+
     }
+
 
 
 
