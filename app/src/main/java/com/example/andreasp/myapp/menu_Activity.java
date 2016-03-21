@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.security.acl.Group;
 import java.util.ArrayList;
@@ -18,18 +19,19 @@ public class menu_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Toast.makeText(this, "Welcome to the bar!", Toast.LENGTH_SHORT).show();
+
 
         mExpandableList = (ExpandableListView)findViewById(R.id.drinksMenu);
 
 
         int Images[] = {R.drawable.beer,R.drawable.drinks,R.drawable.shots,R.drawable.liquor};
         String[] drinksArray = {"Beer","Drinks","Shots","Hard liquor"};
-
         String[] drinkPrices = {"1,50$","2,00$","2,50$","1,00$","2,50$","2,20$","2,50$","2,55$","1,00$","1,10$","1,00$","4,00$","2,00$","5,00$"};
         String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Dark and stormy","Coke'n'rum","Mojito","Pina Colada","Sour shots","Tequila","Licourice shots","Whiskey","Vodka","Brandy"};
         ArrayList<Parent> arrayParents = new ArrayList<Parent>();
-        ArrayList<String> arrayPrice = new ArrayList<String>();
-        ArrayList<String> arrayChildren = new ArrayList<String>();
+        ArrayList<String> arrayPrice;
+        ArrayList<String> arrayChildren;
 
         //here we set the parents and the children
         for (int i = 0; i < drinksArray.length; i++) {

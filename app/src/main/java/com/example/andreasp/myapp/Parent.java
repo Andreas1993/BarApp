@@ -7,6 +7,7 @@ package com.example.andreasp.myapp;
 import java.util.ArrayList;
 
 public class Parent {
+
     private String mTitle;
     private ArrayList<String> mArrayChildren;
     private ArrayList<String> mArrayPrices;

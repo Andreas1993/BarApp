@@ -7,7 +7,6 @@ package com.example.andreasp.myapp;
 
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,6 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
     private LayoutInflater inflater;
     private ArrayList<Parent> mParent;
-
-    //private ArrayList<Price> mPrice;
 
     public CustomAdapter(Context context, ArrayList<Parent> parent){
         mParent = parent;

@@ -43,9 +43,9 @@
                 android:text="The Bar"/>
 
             <Button style="@style/ButtonStyle"
-                android:id="@+id/ProfileButton"
-                android:onClick="clickButton"
-                android:text="Profile"></Button>
+            android:id="@+id/ProfileButton"
+            android:onClick="clickButton"
+            android:text="Profile"></Button>
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
