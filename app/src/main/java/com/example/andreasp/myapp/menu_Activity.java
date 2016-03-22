@@ -4,9 +4,14 @@ package com.example.andreasp.myapp;
 
 import android.app.Activity;
 import android.app.ExpandableListActivity;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import java.security.acl.Group;
 import java.util.ArrayList;
@@ -14,21 +19,69 @@ import java.util.ArrayList;
 public class menu_Activity extends Activity {
     private ExpandableListView mExpandableList;
 
+
+//    public Cursor fetchGroup() {
+//        String query = "SELECT * FROM rooms";
+//        return db.rawQuery(query, null);
+//    }
+//
+//    public Cursor fetchChildren(String room) {
+//        String query = "SELECT * FROM devices WHERE id_room = '" + room + "'";
+//        return db.rawQuery(query, null);
+//    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        SQL_database myhelper = new SQL_database(this);
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+
+        int Images[] = {R.drawable.beer,R.drawable.drinks,R.drawable.shots,R.drawable.liquor};
+        String[] drinksArray = {"Beer","Drinks","Shots","Hard liquor"};
+        String[] drinkPrices = {"1,50$","2,00$","2,50$","1,00$","2,50$","2,20$","2,50$","2,55$","1,00$","1,10$","1,00$","4,00$","2,00$","5,00$"};
+        String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Dark and stormy","Coke'n'rum","Mojito","Pina Colada","Sour shots","Tequila","Licourice shots","Whiskey","Vodka","Brandy"};
+
+        for (int i = 0; i < Images.length; i++){
+            ContentValues valuesToInsert = new ContentValues();
+            valuesToInsert.put(myhelper.DRINKS_IMAGE,Images[i]);
+            valuesToInsert.put(myhelper.PARENT_NAME,drinksArray[i]);
+            long id = db.insert(myhelper.TABLE_PARENT,null,valuesToInsert);
+
+        }
+
+        for (int i = 0; i < drinksIngredients.length; i++) {
+            ContentValues valuesToInsert = new ContentValues();
+            valuesToInsert.put(myhelper.CHILD_NAME,drinksIngredients[i]);
+            valuesToInsert.put(myhelper.DRINKS_PRICE,drinkPrices[i]);
+            long id = db.insert(myhelper.TABLE_CHILD,null,valuesToInsert);
+        }
+
+//        int Images[] = {R.drawable.beer,R.drawable.drinks,R.drawable.shots,R.drawable.liquor};
+//        String[] drinksArray = {"Beer","Drinks","Shots","Hard liquor"};
+//        String[] drinkPrices = {"1,50$","2,00$","2,50$","1,00$","2,50$","2,20$","2,50$","2,55$","1,00$","1,10$","1,00$","4,00$","2,00$","5,00$"};
+//        String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Dark and stormy","Coke'n'rum","Mojito","Pina Colada","Sour shots","Tequila","Licourice shots","Whiskey","Vodka","Brandy"};
+//
+//        for (int i = 0; i < Images.length; i++){
+//        ContentValues valuesToInsert= new ContentValues();
+//        valuesToInsert.put(myhelper.DRINKS_IMAGE,Images[i]);
+//        valuesToInsert.put(myhelper.PARENT_NAME,drinksArray[i]);
+//        long id = db.insert(myhelper.TABLE_PARENT,null,valuesToInsert);
+//        }
+//
+//        for (int i = 0; i < drinksIngredients.length; i++) {
+//            ContentValues valuesToInsert= new ContentValues();
+//            valuesToInsert.put(myhelper.CHILD_NAME,drinksIngredients[i]);
+//            valuesToInsert.put(myhelper.DRINKS_PRICE,drinkPrices[i]);
+//            long id = db.insert(myhelper.TABLE_CHILD,null,valuesToInsert);
+//        }
+
 
         Toast.makeText(this, "Welcome to the bar!", Toast.LENGTH_SHORT).show();
 
 
         mExpandableList = (ExpandableListView)findViewById(R.id.drinksMenu);
 
-
-        int Images[] = {R.drawable.beer,R.drawable.drinks,R.drawable.shots,R.drawable.liquor};
-        String[] drinksArray = {"Beer","Drinks","Shots","Hard liquor"};
-        String[] drinkPrices = {"1,50$","2,00$","2,50$","1,00$","2,50$","2,20$","2,50$","2,55$","1,00$","1,10$","1,00$","4,00$","2,00$","5,00$"};
-        String[] drinksIngredients = {"Carlsberg","Royal Classic","Newcastle","Slots","Dark and stormy","Coke'n'rum","Mojito","Pina Colada","Sour shots","Tequila","Licourice shots","Whiskey","Vodka","Brandy"};
         ArrayList<Parent> arrayParents = new ArrayList<Parent>();
         ArrayList<String> arrayPrice;
         ArrayList<String> arrayChildren;

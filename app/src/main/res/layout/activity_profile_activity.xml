@@ -40,6 +40,7 @@
         android:id="@+id/saveChanges"
         android:layout_gravity="center"
         android:text="Save changes"
+        android:onClick="saveProfile"
         android:textSize="13dp"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

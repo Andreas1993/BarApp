@@ -25,18 +25,13 @@ public class profile_activity extends AppCompatActivity {
 
 
     // Variables
-    Button captureProfilePic;
-    Button saveChanges;
-    //Button loadChanges;
+    Button captureProfilePic,saveChanges;
     ImageView profileConfig;
     private static final int CAMERA_PIC_REQUEST = 1337;
-    EditText FirstNameEdit;
-    EditText LastNameEdit;
-    EditText EmailEdit;
+    EditText FirstNameEdit,LastNameEdit,EmailEdit ;
     String fname;
-    Bitmap ProfileImage;
+    Bitmap ProfileImage,currentProfilePic;
     SharedPreferences ProfileData;
-    Bitmap currentProfilePic;
     int i = 0;
 
 
@@ -49,20 +44,17 @@ public class profile_activity extends AppCompatActivity {
         // General views used
         captureProfilePic = (Button) findViewById(R.id.newProfilePic);
         profileConfig = (ImageView) findViewById(R.id.ProfilePic);
-
+        saveChanges = (Button) findViewById(R.id.saveChanges);
         FirstNameEdit = (EditText) findViewById(R.id.FirstNameEdit);
         LastNameEdit = (EditText) findViewById(R.id.LastNameEdit);
         EmailEdit = (EditText) findViewById(R.id.EmailEdit);
-
-        saveChanges = (Button) findViewById(R.id.saveChanges);
-        //loadChanges = (Button) findViewById(R.id.loadChanges);
 
         // File for saving profile data
         ProfileData = getSharedPreferences(fname, AppCompatActivity.MODE_PRIVATE);
 
         // Setup on click listeners
         captureProfilePic.setOnClickListener(new captureProfilePicClicker());
-        saveChanges.setOnClickListener(new sharedPrefs());
+        //saveChanges.setOnClickListener(new sharedPrefs());
         //loadChanges.setOnClickListener(new sharedPrefs());
 
         // Setup views for profile text
@@ -73,7 +65,6 @@ public class profile_activity extends AppCompatActivity {
         LastNameEdit.setText(LastNameLoad);
         EmailEdit.setText(EmailLoad);
 
-
         // Load profile pic
 
         if (i == 0){
@@ -81,8 +72,6 @@ public class profile_activity extends AppCompatActivity {
             i++;}
         if (ProfileImage != currentProfilePic)
             loadProfilePic();
-
-
     }
 
     @Override
@@ -152,35 +141,48 @@ public class profile_activity extends AppCompatActivity {
         }
     }
 
-    public class sharedPrefs extends AppCompatActivity implements Button.OnClickListener {
+    public void saveProfile(View v){
+        String FirstNameText = FirstNameEdit.getText().toString();
+        String LastNameText = LastNameEdit.getText().toString();
+        String EmailText = EmailEdit.getText().toString();
+        SharedPreferences.Editor ProfileEditor = ProfileData.edit();
+        ProfileEditor.putString("FirstNamePut", FirstNameText);
+        ProfileEditor.putString("LastNamePut", LastNameText);
+        ProfileEditor.putString("EmailHolderPut", EmailText);
+        ProfileEditor.apply();
 
-
-        public void onClick(View v){
-            switch (v.getId()){
-                case R.id.saveChanges:
-                    String FirstNameText = FirstNameEdit.getText().toString();
-                    String LastNameText = LastNameEdit.getText().toString();
-                    String EmailText = EmailEdit.getText().toString();
-                    SharedPreferences.Editor ProfileEditor = ProfileData.edit();
-                    ProfileEditor.putString("FirstNamePut", FirstNameText);
-                    ProfileEditor.putString("LastNamePut", LastNameText);
-                    ProfileEditor.putString("EmailHolderPut", EmailText);
-                    ProfileEditor.apply();
-
-                    internalProfileStorage();
-
-
-                    break;
-
-                case R.id.ProfileButton:
-
-                    break;
-
-            }
-
-        }
-
+        internalProfileStorage();
+        Toast.makeText(this,"Changes Saved!", Toast.LENGTH_SHORT).show();
     }
+//    public class sharedPrefs extends AppCompatActivity implements Button.OnClickListener {
+//
+//
+//        public void onClick(View v){
+//            switch (v.getId()){
+//                case R.id.saveChanges:
+//                    String FirstNameText = FirstNameEdit.getText().toString();
+//                    String LastNameText = LastNameEdit.getText().toString();
+//                    String EmailText = EmailEdit.getText().toString();
+//                    SharedPreferences.Editor ProfileEditor = ProfileData.edit();
+//                    ProfileEditor.putString("FirstNamePut", FirstNameText);
+//                    ProfileEditor.putString("LastNamePut", LastNameText);
+//                    ProfileEditor.putString("EmailHolderPut", EmailText);
+//                    ProfileEditor.apply();
+//
+//                    internalProfileStorage();
+//
+//
+//                    break;
+//
+//                case R.id.ProfileButton:
+//
+//                    break;
+//
+//            }
+//
+//        }
+//
+//    }
 
 
 
