@@ -9,4 +9,47 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.andreasp.myapp.events">
 
+
+    <!--<ListView-->
+        <!--android:id="@+id/EventList"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"></ListView>-->
+
+    <ListView
+        android:id="@+id/ComingEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ListView>
+
+    <TextView
+        android:id="@+id/EventNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/EventDrinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/Partake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Partake"
+        android:ems="8"
+        />
+
+    <Button
+        android:id="@+id/CreateEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create event"
+        android:onClick="CreateEvent"
+        android:ems="8"
+        android:layout_below="@+id/Partake"/>
+
+
 </RelativeLayout>
