@@ -57,6 +57,7 @@
             android:id="@+id/eventsButton"
             android:onClick="clickButton"
             android:text="Events"/>
+
             <Button style="@style/ButtonStyle"
             android:id="@+id/directionButton"
             android:background="@drawable/round_corners"

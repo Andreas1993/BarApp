@@ -21,6 +21,7 @@
         android:layout_height="wrap_content">
     </ListView>
 
+
     <TextView
         android:id="@+id/EventNameText"
         android:layout_width="wrap_content"
@@ -32,24 +33,31 @@
         android:id="@+id/EventDrinkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
-
-    <Button
-        android:id="@+id/Partake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Partake"
-        android:ems="8"
+        android:textStyle="bold"
+        android:layout_below="@+id/EventNameText"
         />
 
-    <Button
-        android:id="@+id/CreateEvent"
+    <TextView
+        android:id="@+id/DateOfEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create event"
-        android:onClick="CreateEvent"
-        android:ems="8"
-        android:layout_below="@+id/Partake"/>
+        android:layout_below="@+id/EventDrinkText"/>
+
+        <Button
+            android:id="@+id/Partake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Partake"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ComingEvents"
+            android:layout_gravity="end"
+            android:ems="8"
+            />
+
+
+
+
 
 
 </RelativeLayout>

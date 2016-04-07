@@ -25,8 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(hoursIntent);
                 break;
             case R.id.eventsButton:
-                Intent eventsIntent = new Intent(MainActivity.this, events.class);
+                Intent eventsIntent = new Intent(MainActivity.this, main_event_activity.class);
                 startActivity(eventsIntent);
+                break;
+            case R.id.directionButton:
+                Intent findUsIntent = new Intent(MainActivity.this, find_us.class);
+                startActivity(findUsIntent);
                 break;
         }
 

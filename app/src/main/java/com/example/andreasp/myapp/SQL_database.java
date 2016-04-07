@@ -41,7 +41,7 @@ public class SQL_database extends SQLiteOpenHelper {
         String ChildQuery = "CREATE TABLE " + TABLE_CHILD + " (" + CHILD_ID +
                 " INTEGER PRIMARY KEY AUTOINCREMENT, " + CHILD_NAME + " TEXT, " + DRINKS_PRICE + " TEXT); ";
         String EventQuery = "CREATE TABLE " + EVENT_TABLE + " (" + EVENT_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_NAME + " TEXT, " + EVENT_DRINK + " TEXT, " + EVENT_DATE + " TEXT, " + EVENT_PARTAKERS + " TEXT); ";
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_DATE + " TEXT, " + EVENT_NAME + " TEXT, " + EVENT_DRINK + " TEXT, " + EVENT_PARTAKERS + " TEXT); ";
         db.execSQL(ParentQuery);
         db.execSQL(ChildQuery);
         db.execSQL(EventQuery);

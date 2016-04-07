@@ -21,11 +21,6 @@ public class events extends AppCompatActivity {
     SQL_database myhelper;
     SQLiteDatabase db;
 
-    public void CreateEvent(View view) {
-        Intent EventIntent = new Intent(events.this, event_creator.class);
-        startActivity(EventIntent);
-        }
-
 
 
     @Override
