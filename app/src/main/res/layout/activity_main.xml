@@ -60,6 +60,7 @@
 
             <Button style="@style/ButtonStyle"
             android:id="@+id/directionButton"
+                android:onClick="clickButton"
             android:background="@drawable/round_corners"
             android:text="Find us"/>
         </LinearLayout>
