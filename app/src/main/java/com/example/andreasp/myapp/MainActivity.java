@@ -32,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent findUsIntent = new Intent(MainActivity.this, find_us.class);
                 startActivity(findUsIntent);
                 break;
+//            case R.id.MusicButton:
+//                Intent JukeBoxIntent = new Intent(MainActivity.this, )
+//                startActivity(JukeBoxIntent):
+            case R.id.DessertList:
+                Intent DessertList = new Intent(MainActivity.this, dessert_list.class);
+                startActivity(DessertList);
+                break;
         }
 
     }

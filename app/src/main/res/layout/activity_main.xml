@@ -46,6 +46,14 @@
             android:id="@+id/ProfileButton"
             android:onClick="clickButton"
             android:text="Profile"></Button>
+
+            <Button style="@style/ButtonStyle"
+                android:id="@+id/DessertList"
+                android:onClick="clickButton"
+                android:text="Desserts">
+
+            </Button>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
@@ -63,6 +71,13 @@
                 android:onClick="clickButton"
             android:background="@drawable/round_corners"
             android:text="Find us"/>
+
+            <Button style="@style/ButtonStyle"
+                android:id="@+id/MusicButton"
+                android:onClick="clickButton"
+                android:text="Music">
+
+            </Button>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
