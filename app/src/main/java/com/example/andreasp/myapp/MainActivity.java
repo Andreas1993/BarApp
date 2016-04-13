@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickButton(View view) {
         switch(view.getId()){
             case R.id.menuButton:
-                Intent menuIntent = new Intent(MainActivity.this, menu_Activity.class);
+                Intent menuIntent = new Intent(MainActivity.this, music_player.class);
                 startActivity(menuIntent);
                 break;
             case  R.id.ProfileButton:

@@ -38,9 +38,9 @@ public class events extends AppCompatActivity {
         // Find ListView to populate
         ListView Events = (ListView) findViewById(R.id.ComingEvents);
         // Setup cursor adapter using cursor from last step
-        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor, 0);
+        // TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor, 0);
         // Attach cursor adapter to the ListView
-        Events.setAdapter(todoAdapter);
+       //  Events.setAdapter(todoAdapter);
 
         // Switch to new cursor and update contents of ListView
 
