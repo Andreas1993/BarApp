@@ -58,5 +58,21 @@
         android:layout_alignParentRight="true"
         android:hint="zAxis"
         />
+    <TextView
+        android:id="@+id/CurrentSong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zAxis"
+        android:textSize="25dp"
+        android:hint="Current song"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/StopMusic"
+        android:text="stop playing"
+        android:onClick="stopMusicButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CurrentSong"
+        android:gravity="center"/>
 
 </RelativeLayout>

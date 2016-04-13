@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -37,12 +38,13 @@ public class events extends AppCompatActivity {
 
         // Find ListView to populate
         ListView Events = (ListView) findViewById(R.id.ComingEvents);
-        // Setup cursor adapter using cursor from last step
-        // TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor, 0);
-        // Attach cursor adapter to the ListView
-       //  Events.setAdapter(todoAdapter);
+         //Setup cursor adapter using cursor from last step
+         TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor, 0);
+         //Attach cursor adapter to the ListView
+         Events.setAdapter(todoAdapter);
 
-        // Switch to new cursor and update contents of ListView
+
+         //Switch to new cursor and update contents of ListView
 
     }
 

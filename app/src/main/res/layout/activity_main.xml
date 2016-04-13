@@ -61,6 +61,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_weight="1">
+
             <Button style="@style/ButtonStyle"
             android:id="@+id/eventsButton"
             android:onClick="clickButton"

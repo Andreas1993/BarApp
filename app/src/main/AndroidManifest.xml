@@ -45,6 +45,12 @@
             android:name=".find_us"
             android:theme="@style/AppTheme"/>
         <activity
+            android:name=".dessert_list"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".main_event_activity"
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".music_player"
             android:theme="@style/AppTheme">
     </activity>

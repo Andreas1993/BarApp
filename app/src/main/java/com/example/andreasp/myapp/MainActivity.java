@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickButton(View view) {
         switch(view.getId()){
             case R.id.menuButton:
-                Intent menuIntent = new Intent(MainActivity.this, music_player.class);
+                Intent menuIntent = new Intent(MainActivity.this, menu_Activity.class);
                 startActivity(menuIntent);
                 break;
             case  R.id.ProfileButton:
@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent findUsIntent = new Intent(MainActivity.this, find_us.class);
                 startActivity(findUsIntent);
                 break;
-//            case R.id.MusicButton:
-//                Intent JukeBoxIntent = new Intent(MainActivity.this, )
-//                startActivity(JukeBoxIntent):
+            case R.id.MusicButton:
+                Intent JukeBoxIntent = new Intent(MainActivity.this, music_player.class);
+                startActivity(JukeBoxIntent);
+                break;
             case R.id.DessertList:
                 Intent DessertList = new Intent(MainActivity.this, dessert_list.class);
                 startActivity(DessertList);
