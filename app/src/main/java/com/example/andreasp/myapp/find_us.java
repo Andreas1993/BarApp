@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -23,6 +24,7 @@ public class find_us extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         com.google.android.gms.location.LocationListener{
 
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 100;
     TextView locationTxt;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
@@ -31,6 +33,13 @@ public class find_us extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_us);
+
+        if(checkPlayServices()){
+            setContentView(R.layout.activity_map);
+        }else{
+            setContentView(R.layout.activity_find_us);
+        }
+
 
         locationTxt = (TextView) findViewById(R.id.LocationTxt);
 
@@ -41,6 +50,19 @@ public class find_us extends AppCompatActivity implements
                 .addApi(AppIndex.API).build();
 
 
+    }
+
+    private boolean checkPlayServices() {
+        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        int result = googleAPI.isGooglePlayServicesAvailable(this);
+        if(result != ConnectionResult.SUCCESS) {
+            if(googleAPI.isUserResolvableError(result)) {
+                googleAPI.getErrorDialog(this, result,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override

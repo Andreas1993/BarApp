@@ -35,8 +35,6 @@ public class music_player extends AppCompatActivity implements SensorEventListen
         yAxis = (TextView) findViewById(R.id.yAxis);
         zAxis = (TextView) findViewById(R.id.zAxis);
         CurrentSong = (TextView) findViewById(R.id.CurrentSong);
-        mp = MediaPlayer.create(this, Songs[0]);
-        mp.start();
 
         smanager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = smanager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -62,11 +60,9 @@ public class music_player extends AppCompatActivity implements SensorEventListen
     }
 
     public void stopMusic (){
-        if (mp!=null) {
             mp.stop();
             mp.release();
             mp = null;
-        }
     }
 
 
