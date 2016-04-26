@@ -33,11 +33,11 @@ public class dessert_list extends AppCompatActivity {
         dessertList = (ListView) findViewById(R.id.dessertListView);
         dessertList.setAdapter(new DessertAdapter(dessertArray, dessert_list.this));
 
-        dessertFrag = new dessertFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.dessertList, dessertFrag, "myDessert");
-        fragmentTransaction.commit();
+//        dessertFrag = new dessertFragment();
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.dessertList, dessertFrag, "myDessert");
+//        fragmentTransaction.commit();
 
 
 //        LandscapeChecker = new OrientationEventListener(getApplicationContext()) {

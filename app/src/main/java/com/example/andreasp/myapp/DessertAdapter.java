@@ -48,7 +48,7 @@ public class DessertAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null) {
-            convertView = dessertInflater.inflate(R.layout.activity_dessert_list, parent, false);
+            convertView = dessertInflater.inflate(R.layout.dessert_list_layout, parent, false);
         }
         dessertText = (TextView)convertView.findViewById(R.id.dessertListText);
 
