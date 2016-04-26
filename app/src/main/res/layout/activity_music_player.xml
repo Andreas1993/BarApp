@@ -66,13 +66,40 @@
         android:textSize="25dp"
         android:hint="Current song"
         android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/ButtonLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CurrentSong">
     <Button
-        android:id="@+id/StopMusic"
-        android:text="stop playing"
-        android:onClick="stopMusicButton"
+        android:id="@+id/NextSong"
+        android:text="Previous"
+        android:layout_weight="1"
+        android:onClick="prevSongButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/CurrentSong"
         android:gravity="center"/>
+    <Button
+        android:id="@+id/StopMusic"
+        android:text="Play"
+        android:onClick="stopPlayMusicButton"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CurrentSong"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/PreviousSong"
+        android:text="Next"
+        android:onClick="nextSongButton"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CurrentSong"
+        android:gravity="center"></Button>
+</LinearLayout>
 
 </RelativeLayout>
